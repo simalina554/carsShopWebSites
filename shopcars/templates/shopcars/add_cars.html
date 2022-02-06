@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}
+Добавление машины
+{% endblock %}
+
+{% block sidebar %}
+<div class="list-group">
+<!--  {% include 'inc/_sidebar.html' %}-->
+</div>
+{% endblock %}
+
+{% block content %}
+<h1>Добавление машины</h1>
+
+
+<form action="{% url 'add_cars' %}" method="post">
+    {% csrf_token %}
+
+    {{ form.non_field.errors }}
+    <div class="form-group">
+        <label for="{{ form.car_brand.id.for_label }}">Бренд:</label>
+        {{ form.car_brand }}
+        <div class="invalid-feedback">
+            {{ form.car_brand.error }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.car_model.id.for_label }}">Модель:</label>
+        {{ form.car_model }}
+        <div class="invalid-feedback">
+            {{ form.car_model.error }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.car_country.id.for_label }}">Страна:</label>
+        {{ form.car_country }}
+        <div class="invalid-feedback">
+            {{ form.car_country.error }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.category.id.for_label }}">Категория:</label>
+        {{ form.category }}
+        <div class="invalid-feedback">
+            {{ form.category.error }}
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="{{ form.car_desription.id.for_label }}">Описание:</label>
+        {{ form.car_desription }}
+        <div class="invalid-feedback">
+            {{ form.car_desription.error }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.car_price.id.for_label }}">Цена:</label>
+        {{ form.car_price }}
+        <div class="invalid-feedback">
+            {{ form.car_price.error }}
+        </div>
+    </div>
+
+
+    <button type="button" class="btn btn-primary btn-block">Добавить</button>
+</form>
+
+
+{% endblock %}
