@@ -1,0 +1,16 @@
+#header{
+background-color: #8d6e63;
+color: #ff8a65;
+}
+
+#branding h1, #branding h1 a:link, #branding h1 a:visited,{
+color: #9e9e9e;
+}
+
+
+caption{
+background: aqua;
+}
+div.breadcrumbs{
+background-color: #6d4c41;
+}

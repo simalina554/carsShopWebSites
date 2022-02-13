@@ -13,7 +13,7 @@
 <h1>Добавление машины</h1>
 
 
-<form action="{% url 'create_cars' %}" method="post">
+<form action="{% url 'create_cars' %}" method="post", enctype="multipart/form-data">
     {% csrf_token %}
 
     {{ form.non_field.errors }}
@@ -66,8 +66,25 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <label for="{{ form.photo.id.for_label }}">Фото:</label>
+        {{ form.photo }}
+        <div class="invalid-feedback">
+            {{ form.photo.error }}
+        </div>
+    </div>
 
-    <button type="button" class="btn btn-primary btn-block">Добавить</button>
+    <div class="form-group">
+        <label for="{{ form.is_published.id.for_label }}">Опубликовано:</label>
+        {{ form.is_published }}
+        <div class="invalid-feedback">
+            {{ form.is_published.error }}
+        </div>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary btn-block">Добавить</button>
 </form>
 
 

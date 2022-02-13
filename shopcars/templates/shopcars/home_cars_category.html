@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block sidebar %}
+<div class="list-group">
+  {% include 'inc/_sidebar.html' %}
+</div>
+{% endblock %}
+
+{% block content %}
+{% for i in carsAll %}
+<div class="container">
+    <div class="card">
+        {% if i.photo %}
+         <img src="{{ i.photo.url }}" width="300px">
+      {% else %}
+      <img src="https://inweb.ua/blog/wp-content/plugins/accelerated-mobile-pages/images/SD-default-image.png" width="300px">
+      {% endif %}
+  <div class="card-body">
+      <h5 class="card-title"><p><a href="{{ i.category.get_absolute_url }}">{{ i.category }}</a></p></h5>
+    <p class="card-text">
+      <h3>{{ i.car_brand }}</h3>
+       Модель: {{ i.car_model }}<br>
+       Страна: {{ i.car_country }}<br>
+   Описание: {{ i.car_desription }}<br>
+      Цена: {{ i.car_price }}<br>
+      Дата выпуска: {{ i.car_relase_date }}</p>
+    <a href="{{ i.get_absolute_url }}" class="btn btn-primary">Подробнее</a>
+  </div>
+</div>
+</div>
+{% endfor %}
+{% endblock %}

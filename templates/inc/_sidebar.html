@@ -1,6 +1,6 @@
 {% load news_tags %}
 <div class="list-group">
-    {% categoryFind as categories %}
+    {% find_category as categories %}
     {% for item in categories %}
     <a href="{{ item.get_absolute_url }}" class="list-group-item list-group-item-action" aria-current="true">
         {{ item.title }}
