@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+Регистрация
+{% endblock %}
+
+{% block sidebar %}
+<div class="list-group">
+<!--  {% include 'inc/_sidebar.html' %}-->
+</div>
+{% endblock %}
+
+{% block content %}
+<h1>Регистрация</h1>
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-warning btn-block">Зарегистрироваться</button>
+</form>
+
+
+{% endblock %}

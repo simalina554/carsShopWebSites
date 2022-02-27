@@ -4,16 +4,14 @@
 {% endblock %}
 
 {% block sidebar %}
-<div class="list-group">
-<!--  {% include 'inc/_sidebar.html' %}-->
-</div>
+
 {% endblock %}
 
 {% block content %}
 <h1>Добавление машины</h1>
 
 
-<form action="{% url 'create_cars' %}" method="post", enctype="multipart/form-data">
+<form action="{% url 'create_cars' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
     {{ form.non_field.errors }}

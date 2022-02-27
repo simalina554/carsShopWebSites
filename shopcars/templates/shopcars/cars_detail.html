@@ -10,21 +10,22 @@
 <div class="container">
     <div class="card">
         {% if cars_item.photo %}
-         <img src="{{ cars_item.photo.url }}" width="300px">
+         <img src="{{ cars_item.photo.url }}" width="300px" class="img-thumbnail">
       {% else %}
       <img src="https://inweb.ua/blog/wp-content/plugins/accelerated-mobile-pages/images/SD-default-image.png" width="300px">
       {% endif %}
   <div class="card-body">
-      <h5 class="card-title"><p><a href="{{ cars_item.category.get_absolute_url }}">{{ cars_item.category }}</a></p></h5>
+      <h5 class="card-title"><p><a href="{{ cars_item.category.get_absolute_url }}">{{ cars_item.category }}</a></h5>
     <p class="card-text">
       <h3>{{ cars_item.car_brand }}</h3>
        Модель: {{ cars_item.car_model }}<br>
        Страна: {{ cars_item.car_country }}<br>
    Описание: {{ cars_item.car_desription }}<br>
-      Цена: {{ cars_item.car_price }}<br>
-      Дата выпуска: {{ cars_item.car_relase_date }}</p>
+      Цена: {{ cars_item.car_price }}
+
   </div>
 </div>
 </div>
+
 
 {% endblock %}

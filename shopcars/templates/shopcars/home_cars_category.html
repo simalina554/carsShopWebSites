@@ -6,11 +6,13 @@
 {% endblock %}
 
 {% block content %}
-{% for i in carsAll %}
-<div class="container">
+<div class="row pt-3">
+        {% for i in carsAll %}
+
+<div class="col-sm-4">
     <div class="card">
         {% if i.photo %}
-         <img src="{{ i.photo.url }}" width="300px">
+         <img src="{{ i.photo.url }}" width="300px" class="img-thumbnail">
       {% else %}
       <img src="https://inweb.ua/blog/wp-content/plugins/accelerated-mobile-pages/images/SD-default-image.png" width="300px">
       {% endif %}
@@ -20,12 +22,12 @@
       <h3>{{ i.car_brand }}</h3>
        Модель: {{ i.car_model }}<br>
        Страна: {{ i.car_country }}<br>
-   Описание: {{ i.car_desription }}<br>
-      Цена: {{ i.car_price }}<br>
-      Дата выпуска: {{ i.car_relase_date }}</p>
+      Цена: {{ i.car_price }}<br></p>
     <a href="{{ i.get_absolute_url }}" class="btn btn-primary">Подробнее</a>
   </div>
 </div>
 </div>
+
 {% endfor %}
+</div>
 {% endblock %}

@@ -1,6 +1,6 @@
 #header{
-background-color: #8d6e63;
-color: #ff8a65;
+background-color: #eceff1;
+color: red;
 }
 
 #branding h1, #branding h1 a:link, #branding h1 a:visited,{
@@ -9,8 +9,8 @@ color: #9e9e9e;
 
 
 caption{
-background: aqua;
+background: #5d4037;
 }
 div.breadcrumbs{
-background-color: #6d4c41;
+background-color: #78909c;
 }

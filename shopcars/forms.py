@@ -1,35 +1,45 @@
 from django import forms
 from .models import *
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+from captcha.fields import CaptchaField, CaptchaTextInput
+
+
+class ContactForm(forms.Form):
+    subjects = forms.CharField(label='Title', widget=forms.TextInput(attrs={"class": "form-control"}))
+    content = forms.CharField(label='Content', widget=forms.Textarea(attrs={"class": "form-control"}))
+    captcha = CaptchaField(widget=CaptchaTextInput())
+
+
+class UserLoginForms(AuthenticationForm):
+    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={"class": "form-control"}))
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={"class": "form-control"}))
+
+
+class UserRegistration(UserCreationForm):
+    username = forms.CharField(label='Name', widget=forms.TextInput(attrs={"class": "form-control", "autocomplete": "off"}))
+    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={"class": "form-control"}))
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={"class": "form-control"}))
+    password2 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={"class": "form-control"}))
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
 
 
 class CarsForm(forms.ModelForm):
+    class Meta:
+        model = Cars
 
-    fields = ['car_brand', 'car_model', 'car_country', 'car_desription', 'car_price', 'car_relase_date', 'photo',
-              'category']
+        fields = ['car_brand', 'car_model', 'car_country', 'car_desription', 'car_price', 'photo',
+                  'category', 'is_published']
 
-    widgets = {
-        'car_brand': forms.TextInput(attrs={"class": "form-control"}),
-        'car_model': forms.TextInput(attrs={"class": "form-control"}),
-        'car_country': forms.TextInput(attrs={"class": "form-control"}),
-        'car_desription': forms.Textarea(attrs={"class": "form-control"}),
-        'car_price': forms.TextInput(attrs={"class": "form-control"}),
-        'car_relase_date': forms.TextInput(attrs={"class": "form-control"}),
-        'category': forms.Select(attrs={"class": "form-control"})
-
-    }
-
-    # car_brand = forms.CharField(max_length=200, label='Бренд',
-    #                             widget=forms.TextInput(attrs={"class": "form-control"}))
-    # car_model = forms.CharField(max_length=200, label='Модель',
-    #                             widget=forms.TextInput(attrs={"class": "form-control"}))
-    # car_country = forms.CharField(max_length=200, label='Страна',
-    #                               widget=forms.TextInput(attrs={"class": "form-control"}))
-    # car_desription = forms.CharField(label='Текст', required=False,
-    #                                  widget=forms.Textarea(attrs={"class": "form-control"}))
-    # car_price = forms.CharField(max_length=200, label='Цена',
-    #                             widget=forms.TextInput(attrs={"class": "form-control"}))
-    # car_relase_date = forms.CharField(max_length=200, label='Дата',
-    #                                   widget=forms.TextInput(attrs={"class": "form-control"}))
-    # # photo = forms.ImageField(upload_to='photos/%Y/%m/%d', default='', verbose_name='Фото', null=True)
-    # category = forms.ModelChoiceField(label='Категория', queryset=Category.objects.all(),
-    #                                   widget=forms.Select(attrs={"class": "form-control"}))
+        widgets = {
+            'car_brand': forms.TextInput(attrs={"class": "form-control"}),
+            'car_model': forms.TextInput(attrs={"class": "form-control"}),
+            'car_country': forms.TextInput(attrs={"class": "form-control"}),
+            'car_desription': forms.Textarea(attrs={"class": "form-control"}),
+            'car_price': forms.TextInput(attrs={"class": "form-control"}),
+            'category': forms.Select(attrs={"class": "form-control"}),
+            'photo': forms.FileInput(attrs={"class": "form-control"})
+        }

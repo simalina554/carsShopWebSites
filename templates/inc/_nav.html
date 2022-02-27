@@ -15,10 +15,19 @@
           <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{% url 'contactus' %}">Наши контакты</a>
         </li>
+        {% if request.user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{% url 'create_cars' %}">Добавление машины</a>
         </li>
-      </ul>
-    </div>
+        {% endif %}
+        </ul>
+      </div>
+        <span class="navbar-text">
+          {% if request.user.is_authenticated %}
+          Добро пожаловать, {{ user.username }}| <a href="{% url 'logout' %}">Выход</a>
+          {% else %}
+          <a href="{% url 'registr' %}">Регистрация</a>|<a href="{% url 'login' %}">Авторизация</a>
+          {% endif %}
+        </span>
   </div>
 </nav>
